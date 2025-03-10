@@ -1,14 +1,18 @@
 import React from 'react'
 import './App.css'
-import { Button } from 'flowbite-react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import AppLayout from './layouts/AppLayout'
 
-  const App:React.FC = () => {
+const App: React.FC = () => {
 
   return (
-    <>
-      <h1 className='text-[green] text-center font-bold py-2'>Portfolio</h1>
-      <Button color="success" pill>Click me</Button>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<AppLayout />}>
+
+        </Route>
+      </Routes>
+    </BrowserRouter>
   )
 }
 
