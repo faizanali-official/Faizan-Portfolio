@@ -1,26 +1,30 @@
-import { Navbar, NavbarBrand, NavbarCollapse, NavbarToggle } from 'flowbite-react'
-import React from 'react'
-import { Link } from 'react-router-dom'
+import { Navbar, NavbarCollapse, NavbarToggle } from 'flowbite-react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Header: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className='bg-black'>
-      <Navbar fluid>
-        <NavbarBrand href="/">
+    <div>
+      <Navbar fluid className="bg-black text-white">
+        <Link to="/" className="flex items-center gap-2">
           <img src="./src/assets/icons/favicon-log.svg" className="h-6 sm:h-9" alt="Logo" />
-          <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-            Portfolio
-          </span>
-        </NavbarBrand>
-        <NavbarToggle />
-        <NavbarCollapse>
-          <Link to="/">Home</Link>
-          <Link to="/about">About</Link>
-          <Link to="/contact">Contact</Link>
+          <span className="text-xl font-semibold">Portfolio</span>
+        </Link>
+        <NavbarToggle onClick={() => setIsOpen(!isOpen)} />
+        <NavbarCollapse className={`flex flex-col md:flex-row items-center justify-between gap-6 ${isOpen ? 'block' : 'hidden'} md:flex`}>
+          <Link to="/" className="hover:text-gray-300 pt-2">Home</Link>
+          <Link to="/about" className="hover:text-gray-300 pt-2">About</Link>
+          <Link to="/contact" className="hover:text-gray-300 pt-2">Contact</Link>
+          <img
+            className="w-10 h-10 rounded-full object-cover border-2 md:m-0 mt-2 border-gray-400"
+            src="./src/assets/images/1721731820291.jpg"
+            alt="Profile"
+          />
         </NavbarCollapse>
       </Navbar>
     </div>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
